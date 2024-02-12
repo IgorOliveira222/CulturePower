@@ -1,20 +1,20 @@
-import express, { Router } from 'express' ;
-import dotenv from 'dotenv' ;
-import { databaseConection } from './mongoDb/conect';
-import { authRoutes } from './modules/authModule/routes/routes';
+import express, { Router } from "express";
+import dotenv from "dotenv";
+import { databaseConection } from "./mongoDb/conect";
+import { authRoutes } from "./modules/authModule/routes/routes";
 
+dotenv.config();
 
-dotenv.config()
+databaseConection.initDb();
 
-databaseConection.initDb()
+const app = express();
+const port = process.env.PORT;
+app.use(express.json());
+app.use(authRoutes);
 
-const app = express()
-const port = process.env.PORT
-app.use(authRoutes)
+app.get("/", (req, res) => {
+  // res.json({message:'Hello World'})
+  res.send("Hello World");
+});
 
-app.get('/', (req,res)=>{
-    // res.json({message:'Hello World'})
-    res.send('Hello World')
-})
-
-app.listen(port,()=> console.log(`server listining on port ${port}`)) 
+app.listen(port, () => console.log(`server listining on port ${port}`));
