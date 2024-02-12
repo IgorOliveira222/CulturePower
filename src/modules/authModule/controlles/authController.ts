@@ -27,7 +27,6 @@ export class AuthController implements IAuthController {
     try {
       const { body } = req;
       const newUser = await this.authService.registerUser(body);
-      console.log(newUser);
       res.status(200).json({ user: newUser?.newUser, token: newUser?.token });
     } catch (error: any) {
       res.status(500).json({ error: error.message });
