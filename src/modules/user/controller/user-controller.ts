@@ -1,9 +1,8 @@
-import { Request, Response } from "express";
 import { IUserController } from "./user-controller-interface";
 import { IUserService } from "../services/user-service-interface";
 import { updateUserValidator } from "../utils/updateUserValidator";
 import { userInsertGemsValidator } from "../utils/userInsertGemsValidator";
-import { getUserByEmailValidator } from "../utils/getUserByEmailValidator";
+import { Request, Response } from "express";
 
 export class UserController implements IUserController {
   constructor(private userService: IUserService) {}
@@ -43,7 +42,6 @@ export class UserController implements IUserController {
       const { body } = req;
       await updateUserValidator.validate({ body: body }, { abortEarly: true });
       const updadeUser = await this.userService.updateUser(id, body);
-
       res.status(200).json(updadeUser);
     } catch (error: any) {
       res.status(500).json({ message: error });
