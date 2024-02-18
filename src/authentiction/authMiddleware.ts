@@ -11,7 +11,7 @@ export class AuthMiddleware {
       jwt.verify(token, process.env.JWT_SECRET as string);
       return next();
     } catch (error: any) {
-      res.status(401).json({ mensage: "access unauthorized" });
+      res.status(401).json({ error: error.message, mensage: "access denied" });
     }
   }
 }
