@@ -4,7 +4,7 @@ import { databaseConection } from "./mongoDb/conect";
 import { userRoutes } from "./modules/user/routes/user-routes";
 import { authRoutes } from "./modules/auth/routes/auth-routes";
 import { rescueProductRoutes } from "./modules/rescue/routes/rescue-routes";
-import { itemRoutes } from "./modules/product/routes/item-routes";
+import { itemRoutes } from "./modules/item/routes/item-routes";
 
 dotenv.config();
 

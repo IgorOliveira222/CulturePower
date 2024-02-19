@@ -4,7 +4,7 @@ import { RescueProduct } from "../models/rescue-model";
 import { IRescueRepo } from "../repo/rescue-repo-interface";
 import { IRescueProductService } from "./rescue-services-interface";
 import { UserModel } from "../../user/models/user-model";
-import { ItemModel } from "../../product/models/item-model";
+import { ItemModel } from "../../item/models/item-model";
 
 export class RescueProductService implements IRescueProductService {
   constructor(private rescueRepo: IRescueRepo) {}
